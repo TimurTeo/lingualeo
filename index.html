@@ -1,1 +1,79 @@
-hello
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переход на LinguaLeo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #f5f5f5;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #ffcc00;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(103250495, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/103250495" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    <img src="https://frontend-landings.lingualeo.com/production/images/tild3933-3530-4931-b330-633630636161__clip_path_group.png" alt="LinguaLeo" class="logo">
+    <h1>Перенаправление на LinguaLeo...</h1>
+    <div class="loader"></div>
+    <p>Подождите, идёт переход на официальный сайт.</p>
+
+    <script>
+        // Параметры редиректов (добавляйте новые ссылки здесь)
+        const redirects = {
+            default: "https://f.gdeslon.ru/cf/b86c544382?mid=111218&erid=2SDnjcbg5Fn&goto=https%3A%2F%2Flingualeo.com%2Fru",
+            promo: "https://f.gdeslon.ru/cf/b86c544382?mid=111218&erid=2SDnjcbg5Fn&goto=https%3A%2F%2Flingualeo.com%2Fru%2Fpromo", // Пример для ?p=promo
+            // Добавьте другие варианты:
+            // trial: "https://...",  // Для ?p=trial
+            // kids: "https://..."   // Для ?p=kids
+        };
+
+        // Получаем параметр из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const p = urlParams.get('p');
+        
+        // Выбираем ссылку для редиректа
+        const redirectUrl = redirects[p] || redirects.default;
+
+        // Фиксируем переход в Метрике и редиректим
+        ym(103250495, 'hit', `/click?p=${p || 'default'}`);
+        setTimeout(function() {
+            window.location.href = redirectUrl;
+        }, 500); // Задержка для гарантированной отправки данных в Метрику
+    </script>
+</body>
+</html>
